@@ -100,7 +100,7 @@ A session marked `"deleted": true` was in the folder but Claude Code has since d
 
 | Setting | Default | What it does |
 |---|---|---|
-| `sessionFolders.claudeDir` | empty (`~/.claude`) | Claude Code's data folder, if yours is somewhere else |
+| `sessionFolders.claudeDir` | empty (`~/.claude`) | Claude Code's data folder, if yours is somewhere else. Only your user settings can set it; a folder's workspace settings are ignored, so a repository you open cannot point the extension somewhere else. |
 
 ## Requirements
 
@@ -113,6 +113,10 @@ Everything stays on your machine. The extension makes no network requests and co
 It reads Claude Code's session transcripts in `~/.claude/projects`, its list of running sessions
 in `~/.claude/sessions/*.json` (never the `*.key` files next to them), and `cleanupPeriodDays`
 from `~/.claude/settings.json`.
+
+The two files it writes stay next to Claude Code's own data. The index file holds the titles of
+sessions you have filed (a title can be the start of your first prompt) and their full paths on
+disk, so treat it like your transcripts: don't put `~/.claude` in a synced or shared folder.
 
 ## Author
 

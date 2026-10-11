@@ -2,7 +2,7 @@
   "name": "claude-session-folders",
   "displayName": "Session Folders for Claude Code",
   "description": "Group your Claude Code sessions into named, colored folders in the VS Code sidebar.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "devakmmm",
   "author": "Devak Mehta",
   "license": "MIT",
@@ -34,6 +34,15 @@
   ],
   "main": "./src/extension.js",
   "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "In untrusted folders the Claude data folder setting is taken from your user settings only.",
+      "restrictedConfigurations": [
+        "sessionFolders.claudeDir"
+      ]
+    }
+  },
   "contributes": {
     "viewsContainers": {
       "activitybar": [
@@ -59,7 +68,8 @@
         "sessionFolders.claudeDir": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Claude Code's data folder. Leave empty for `~/.claude`."
+          "scope": "machine",
+          "markdownDescription": "Claude Code's data folder. Leave empty for `~/.claude`. Set it in your user settings; a workspace cannot change it."
         }
       }
     },

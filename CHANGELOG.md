@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+- Security: the Claude data folder setting can only be set in user settings. A repository's
+  workspace settings can no longer point the extension at another folder.
+- README: what the index file contains, and why `~/.claude` should not be synced or shared.
+
 ## 0.1.1
 
 - The sidebar byline is easier to spot: "by devakmmm" opens the author's website, with a LinkedIn

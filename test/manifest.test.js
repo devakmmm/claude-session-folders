@@ -50,6 +50,13 @@ test('README and CHANGELOG have no SVG or non-https images', () => {
   }
 });
 
+test('the Claude data folder setting comes from user settings only, so a workspace cannot redirect reads or writes', () => {
+  const p = pkg();
+  assert.strictEqual(p.contributes.configuration.properties['sessionFolders.claudeDir'].scope, 'machine');
+  assert.strictEqual(p.capabilities.untrustedWorkspaces.supported, 'limited');
+  assert.deepStrictEqual(p.capabilities.untrustedWorkspaces.restrictedConfigurations, ['sessionFolders.claudeDir']);
+});
+
 test('at most 30 keywords', () => {
   assert.ok((pkg().keywords || []).length <= 30);
 });
