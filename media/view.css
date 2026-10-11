@@ -54,8 +54,10 @@ body {
 }
 .brand { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .title { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-.by { color: var(--faint); font-size: 11px; text-decoration: none; }
-.by:hover, .by:focus-visible { color: var(--acc); text-decoration: underline; }
+.byline { display: flex; align-items: baseline; gap: 6px; font-size: 11.5px; white-space: nowrap; }
+.byline .sep { color: var(--faint); }
+.by { color: var(--acc); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.by:hover, .by:focus-visible { text-shadow: 0 0 calc(8px * var(--glow)) rgba(var(--accrgb), 0.6); }
 .livecount {
   margin-left: auto; color: var(--acc); font: 700 10.5px/1 var(--vscode-editor-font-family, monospace);
   letter-spacing: 0.12em; font-variant-numeric: tabular-nums;

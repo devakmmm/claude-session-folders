@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- The sidebar byline is easier to spot: "by devakmmm" opens the author's website, with a LinkedIn
+  link beside it.
+
 ## 0.1.0
 
 - Folders you create, name and color, holding sessions from any project; every other session

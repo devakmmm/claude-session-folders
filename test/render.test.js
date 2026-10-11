@@ -129,12 +129,11 @@ test('read-only mode shows the message and no lists (we could not read what is f
   assert.doesNotMatch(html, /visible\?|Unfiled|data-action="newFolder"/);
 });
 
-test('the header credits the author: "by devakmmm" links to the public repo, also in read-only mode', () => {
-  const repo = require('../package.json').repository.url.replace(/\.git$/, '');
-  const escaped = repo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+test('the header credits the author: "by devakmmm" opens the website and "LinkedIn" the profile, also in read-only mode', () => {
   for (const html of [render(state()), render(state({ readOnly: 'EBUSY: resource busy or locked' }))]) {
     const header = html.match(/<header class="head">[\s\S]*?<\/header>/)[0];
-    assert.match(header, new RegExp(`<a class="by" href="${escaped}"[^>]*>by devakmmm</a>`));
+    assert.match(header, /<a class="by" href="https:\/\/devak-mehta\.vercel\.app"[^>]*>by devakmmm/);
+    assert.match(header, /<a class="by" href="https:\/\/www\.linkedin\.com\/in\/devak-mehta"[^>]*>LinkedIn/);
   }
 });
 

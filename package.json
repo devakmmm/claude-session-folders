@@ -2,7 +2,7 @@
   "name": "claude-session-folders",
   "displayName": "Session Folders for Claude Code",
   "description": "Group your Claude Code sessions into named, colored folders in the VS Code sidebar.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "devakmmm",
   "author": "Devak Mehta",
   "license": "MIT",

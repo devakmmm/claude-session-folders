@@ -1,7 +1,8 @@
 (function (root) {
   const DAY = 24 * 60 * 60 * 1000;
-  // The header byline links here; must match package.json repository.url (a test checks).
-  const REPO = 'https://github.com/devakmmm/claude-session-folders';
+  // The header byline: the author's website and LinkedIn profile.
+  const SITE = 'https://devak-mehta.vercel.app';
+  const LINKEDIN = 'https://www.linkedin.com/in/devak-mehta';
 
   // Claude Code deletes session files older than cleanupPeriodDays when it starts.
   function retentionNotice(days) {
@@ -117,7 +118,9 @@
       selected: ui.selected || { container: null, ids: [] },
     };
     return '<header class="head"><span class="arcr" aria-hidden="true"></span>'
-      + `<span class="brand"><span class="title">Session Folders</span><a class="by" href="${REPO}" title="Source code on GitHub">by devakmmm</a></span>`
+      + '<span class="brand"><span class="title">Session Folders</span><span class="byline">'
+      + `<a class="by" href="${SITE}" title="Devak Mehta's website">by devakmmm &#8599;</a><span class="sep">·</span>`
+      + `<a class="by" href="${LINKEDIN}" title="Devak Mehta on LinkedIn">LinkedIn &#8599;</a></span></span>`
       + `<span class="livecount">${ctx.running.size} LIVE</span></header>`
       + notices(state)
       + (state.readOnly ? readOnlyMessage(state.readOnly) : body(state, ctx));

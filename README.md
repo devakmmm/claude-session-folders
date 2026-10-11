@@ -116,7 +116,7 @@ from `~/.claude/settings.json`.
 
 ## Author
 
-Made by Devak Mehta: [GitHub](https://github.com/devakmmm) · [LinkedIn](https://www.linkedin.com/in/devak-mehta).
+Made by Devak Mehta: [website](https://devak-mehta.vercel.app) · [GitHub](https://github.com/devakmmm) · [LinkedIn](https://www.linkedin.com/in/devak-mehta).
 
 ## Not affiliated with Anthropic
 
