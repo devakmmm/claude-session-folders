@@ -1,0 +1,10 @@
+.vscode/**
+.git/**
+.gitignore
+.gitattributes
+test/**
+*.vsix
+docs/**
+CONTEXT.md
+scripts/**
+sandbox/**

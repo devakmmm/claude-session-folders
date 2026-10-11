@@ -1,0 +1,222 @@
+{
+  "name": "claude-session-folders",
+  "displayName": "Session Folders for Claude Code",
+  "description": "Group your Claude Code sessions into named, colored folders in the VS Code sidebar.",
+  "version": "0.1.0",
+  "publisher": "devakmmm",
+  "author": "Devak Mehta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devakmmm/claude-session-folders.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devakmmm/claude-session-folders/issues"
+  },
+  "homepage": "https://github.com/devakmmm/claude-session-folders#readme",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "sessions",
+    "folders",
+    "ai"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claudeSessionFolders",
+          "title": "Session Folders",
+          "icon": "images/activity-bar.svg"
+        }
+      ]
+    },
+    "views": {
+      "claudeSessionFolders": [
+        {
+          "id": "claudeSessionFolders.sessions",
+          "name": "Sessions",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Session Folders",
+      "properties": {
+        "sessionFolders.claudeDir": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Claude Code's data folder. Leave empty for `~/.claude`."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "claudeSessionFolders.addCurrentSession",
+        "title": "Add This Session to a Folder…",
+        "category": "Session Folders",
+        "icon": "$(add)"
+      },
+      {
+        "command": "claudeSessionFolders.newFolder",
+        "title": "New Folder",
+        "category": "Session Folders",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "claudeSessionFolders.refresh",
+        "title": "Refresh",
+        "category": "Session Folders",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "claudeSessionFolders.menu.open",
+        "title": "Open Session",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.add",
+        "title": "Add to Folder…",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.move",
+        "title": "Move to Folder…",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.remove",
+        "title": "Remove from Folder",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.rename",
+        "title": "Rename Folder…",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.color",
+        "title": "Change Folder Color…",
+        "category": "Session Folders"
+      },
+      {
+        "command": "claudeSessionFolders.menu.delete",
+        "title": "Delete Folder…",
+        "category": "Session Folders"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "claudeSessionFolders.addCurrentSession",
+          "when": "view == claudeSessionFolders.sessions",
+          "group": "navigation@1"
+        },
+        {
+          "command": "claudeSessionFolders.newFolder",
+          "when": "view == claudeSessionFolders.sessions",
+          "group": "navigation@2"
+        },
+        {
+          "command": "claudeSessionFolders.refresh",
+          "when": "view == claudeSessionFolders.sessions",
+          "group": "navigation@3"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "claudeSessionFolders.addCurrentSession",
+          "when": "activeWebviewPanelId == 'claudeVSCodePanel'",
+          "group": "navigation"
+        }
+      ],
+      "webview/context": [
+        {
+          "command": "claudeSessionFolders.menu.open",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'filedSession' || webviewSection == 'unfiledSession')",
+          "group": "1_folders@0"
+        },
+        {
+          "command": "claudeSessionFolders.menu.add",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'unfiledSession' || webviewSection == 'filedSession')",
+          "group": "1_folders@1"
+        },
+        {
+          "command": "claudeSessionFolders.menu.move",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'filedSession')",
+          "group": "1_folders@2"
+        },
+        {
+          "command": "claudeSessionFolders.menu.remove",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'filedSession' || webviewSection == 'deletedSession')",
+          "group": "1_folders@3"
+        },
+        {
+          "command": "claudeSessionFolders.menu.rename",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'folder')",
+          "group": "1_folders@4"
+        },
+        {
+          "command": "claudeSessionFolders.menu.color",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'folder')",
+          "group": "1_folders@5"
+        },
+        {
+          "command": "claudeSessionFolders.menu.delete",
+          "when": "webviewId == 'claudeSessionFolders.sessions' && (webviewSection == 'folder')",
+          "group": "2_folders@6"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "claudeSessionFolders.menu.open",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.add",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.move",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.remove",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.rename",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.color",
+          "when": "false"
+        },
+        {
+          "command": "claudeSessionFolders.menu.delete",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "4.0.0"
+  }
+}

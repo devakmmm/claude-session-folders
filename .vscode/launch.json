@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Opens sandbox/workspace, whose .vscode/settings.json sets "sessionFolders.claudeDir" to the
+      // absolute path of sandbox/claude, so development never reads or writes your real ~/.claude.
+      // sandbox/ is gitignored and never packaged. Create it once: sandbox/claude/projects/ holds
+      // copies of a few sessions, and sandbox/workspace/.vscode/settings.json points claudeDir there.
+      "name": "Run Extension (sandbox)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "${workspaceFolder}/sandbox/workspace"
+      ]
+    }
+  ]
+}
